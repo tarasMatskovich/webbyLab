@@ -1,0 +1,25 @@
+.content {
+	margin-top: 50px;
+}
+
+.main-title, .title {
+	margin-bottom: 30px;
+}
+
+.add-film {
+	margin-bottom: 30px;
+}
+
+.delete-actor {
+	cursor: pointer;
+	color: red;
+	margin-left: 10px;
+}
+
+.actors-list {
+	margin-bottom: 30px;
+}
+
+.alerts {
+	margin: 30px 0;
+}
