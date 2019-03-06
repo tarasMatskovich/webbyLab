@@ -65,24 +65,25 @@ class FilmController extends Controller {
 			if (count($errors)) {
 				Session::setFlash('error', $errors);	
 				header('Location: http://'.$_SERVER['HTTP_HOST']. "/add");
-			}
-			$film = new Film();
-			$film->title = $_POST['title'];
-			$film->year = $_POST['year'];
-			$film->format = $_POST['format'];
-			if ($film->save()) {
-				foreach ($_POST['actors'] as $actorI) {
-					$actor = new Actor();
-					$actor->name = $actorI['name'];
-					$actor->surname = $actorI['surname'];
-					$actor->film_id = $film->id;
-					$actor->save();
-				}
-				Session::setFlash('success', [['Фильм был успешно добавлен']]);
-				header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");
 			} else {
-				Session::setFlash('error', [['При сохранении фильма в базе данных произошла ошибка']]);
-				header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");
+				$film = new Film();
+				$film->title = $_POST['title'];
+				$film->year = $_POST['year'];
+				$film->format = $_POST['format'];
+				if ($film->save()) {
+					foreach ($_POST['actors'] as $actorI) {
+						$actor = new Actor();
+						$actor->name = $actorI['name'];
+						$actor->surname = $actorI['surname'];
+						$actor->film_id = $film->id;
+						$actor->save();
+					}
+					Session::setFlash('success', [['Фильм был успешно добавлен']]);
+					header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");
+				} else {
+					Session::setFlash('error', [['При сохранении фильма в базе данных произошла ошибка']]);
+					header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");
+				}
 			}
 		} else {
 			throw new \Exception("Error: 404 Resource not found");
