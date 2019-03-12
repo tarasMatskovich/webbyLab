@@ -4,7 +4,7 @@ var app = new Vue({
     actors: [],
     name: '',
     surname: '',
-    id : 1,
+    id : 1
   },
   methods: {
   	onAddActor () {
@@ -29,6 +29,11 @@ var app = new Vue({
   			$("#actors-hidden").append("<input type='hidden' name=actors[" + actor.id + "][name] value='" + actor.name + "'>");
   			$("#actors-hidden").append("<input type='hidden' name=actors[" + actor.id + "][surname] value='" + actor.surname + "'>");
   		});
-  	}
+  	},
+    onSortChange()
+    {
+      var sort = $("#sort").val();
+      document.location.href = '/list?sort=' + sort;
+    }
   }
 })

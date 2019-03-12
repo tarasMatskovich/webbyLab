@@ -6,6 +6,11 @@
         <h2 class="title">
           Список фильмов
         </h2>
+        <p class="sort-title">Сортировать:</p>
+        <select class="form-control sort" @change="onSortChange" id="sort">
+          <option value="1" <?php if (isset($_GET['sort']) && $_GET['sort'] == 1): ?> selected <?php endif;?> >По названию в алфавитном порядке</option>
+          <option value="2" <?php if (isset($_GET['sort']) && $_GET['sort'] == 2): ?> selected <?php endif;?> >По названию в обратном алфавитном порядке</option>
+        </select>
         <a href="/add" class="btn btn-primary add-film">Добавить фильм</a>
         <table class="table">
           <thead>
@@ -28,11 +33,11 @@
               <td><?=$film->year?></td>
               <td><?=$film->format?></td>
               <td>
-                <?foreach($film->actors as $actor):?>
+                <?php foreach($film->actors as $actor):?>
                   <?=$actor->name?>
                   <?=$actor->surname?>
                   <br>
-                <?endforeach;?>
+                <?php endforeach;?>
               </td>
               <td>
                 <a href="<?="/film/$film->id"?>"><i class="fas fa-bars"></i></a>&nbsp;&nbsp;

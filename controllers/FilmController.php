@@ -11,7 +11,18 @@ use App\Components\Session;
 class FilmController extends Controller {
 	public function index()
 	{
-		$films = Film::with("actors")::orderBy(['title' => "ASC"])::getAll();
+		$order = ['title' => "ASC"];
+		if (isset($_GET['sort'])) {
+			switch($_GET['sort']) {
+				case 1:
+					$order = ['title' => "ASC"];
+					break;
+				case 2:
+					$order = ['title' => "DESC"];
+					break;
+			}
+		}
+		$films = Film::with("actors")::orderBy($order)::getAll();
 		return View::render("films_list", ["films" => $films]);
 	}
 
@@ -63,7 +74,7 @@ class FilmController extends Controller {
 				}
 			}
 			if (count($errors)) {
-				Session::setFlash('error', $errors);	
+				Session::setFlash('error', $errors);
 				header('Location: http://'.$_SERVER['HTTP_HOST']. "/add");
 			} else {
 				$film = new Film();
@@ -98,7 +109,7 @@ class FilmController extends Controller {
 
 		if ($film->delete()) {
 				Session::setFlash('success', [['Фильм был успешно удален']]);
-				header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");		
+				header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");
 		} else {
 				Session::setFlash('error', [['При удалении фильма в базе данных произошла ошибка']]);
 				header('Location: http://'.$_SERVER['HTTP_HOST']. "/list");

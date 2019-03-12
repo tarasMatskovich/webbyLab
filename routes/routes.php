@@ -2,7 +2,7 @@
 
 return [
 	'/' => 'index/index',
-	'list' => 'film/index',
+	'list(.*?)' => 'film/index',
 	'film/([0-9]+)' => 'film/show/$1',
 	'add' => 'film/add',
 	'addFilm' => 'film/addFilm',

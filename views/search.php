@@ -27,11 +27,11 @@
               <td><?=$film->year?></td>
               <td><?=$film->format?></td>
               <td>
-                <?foreach($film->actors as $actor):?>
+                <?php foreach($film->actors as $actor):?>
                   <?=$actor->name?>
                   <?=$actor->surname?>
                   <br>
-                <?endforeach;?>
+                <?php endforeach;?>
               </td>
               <td>
                 <a href="<?="/film/$film->id"?>"><i class="fas fa-bars"></i></a>
