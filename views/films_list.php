@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <? include_once dirname(__FILE__) . "/layouts/header.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/header.php"?>
     <div class="content">
       <div class="container">
         <h2 class="title">
@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <? foreach ($films as $film):?>
+            <?php foreach ($films as $film):?>
             <tr>
               <td>
                 <a href="<?="/film/$film->id"?>">
@@ -39,10 +39,10 @@
                 <a href="<?="/delete/$film->id"?>"><i class="fas fa-trash-alt"></i></a>
               </td>
             </tr>
-            <? endforeach;?>
+          <?php endforeach;?>
           </tbody>
         </table>
       </div>
     </div>
 
-  <? include_once dirname(__FILE__) . "/layouts/footer.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/footer.php"?>

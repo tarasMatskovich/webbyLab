@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <? include_once dirname(__FILE__) . "/layouts/header.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/header.php"?>
     <div class="content">
       <div class="container">
         <h2 class="title">Добавление нового фильма</h2>
@@ -24,7 +24,7 @@
           <div class="form-group">
             <label for="">Списки актеров</label>
             <div id="actors-hidden">
-              
+
             </div>
             <ul class="actors-list list-group">
               <li class="list-group-item" v-for="actor in actors">{{actor.name}} {{actor.surname}} <i class="fas fa-times delete-actor" @click="deleteActor(actor.id)"></i></li>
@@ -46,4 +46,4 @@
       </div>
     </div>
 
-  <? include_once dirname(__FILE__) . "/layouts/footer.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/footer.php"?>

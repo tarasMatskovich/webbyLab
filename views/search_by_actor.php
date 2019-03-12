@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <? include_once dirname(__FILE__) . "/layouts/header.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/header.php"?>
     <div class="content">
       <div class="container">
         <h2 class="title">
@@ -18,4 +18,4 @@
       </div>
     </div>
 
-  <? include_once dirname(__FILE__) . "/layouts/footer.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/footer.php"?>
