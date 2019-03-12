@@ -1,9 +1,3 @@
-// $(document).ready(() => {
-// 	$(".add-actor").on("click", (e) => {
-// 		alert(1);
-// 	})
-// });
-
 var app = new Vue({
   el: '#app',
   data: {
