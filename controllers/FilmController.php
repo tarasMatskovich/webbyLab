@@ -54,11 +54,15 @@ class FilmController extends Controller {
 			if (!$_POST['actors']) {
 				$errors['actors'] = ["Список актеров не должен быть пустым"];
 			} else {
-				foreach ($_POST['actors'] as $actor) {
-					$validator_actors = Validator::validate(['actor'], ['name' => ['required'], 'surname' => ['required']], ['name.required' => 'Поле Имя обезательное', 'surname.required' => 'Поле Фамилия обезательное']);
-					if ($validator_actors->getErrorsCount()) {
-						$actorError = $validator_actors->getErrors();
-						$errors = array_merge($errors, $actorError);
+				if ((int)$_POST['year'] <= 0) {
+					$errors['film'] = ["Год выпуска не может быть меньше или равно 0"];
+				} else {
+					foreach ($_POST['actors'] as $actor) {
+						$validator_actors = Validator::validate(['actor'], ['name' => ['required'], 'surname' => ['required']], ['name.required' => 'Поле Имя обезательное', 'surname.required' => 'Поле Фамилия обезательное']);
+						if ($validator_actors->getErrorsCount()) {
+							$actorError = $validator_actors->getErrors();
+							$errors = array_merge($errors, $actorError);
+						}
 					}
 				}
 			}
@@ -68,7 +72,7 @@ class FilmController extends Controller {
 			} else {
 				$film = new Film();
 				$film->title = $_POST['title'];
-				$film->year = $_POST['year'];
+				$film->year = (int)$_POST['year'];
 				$film->format = $_POST['format'];
 				if ($film->save()) {
 					foreach ($_POST['actors'] as $actorI) {
