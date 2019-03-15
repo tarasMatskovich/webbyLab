@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <? include_once dirname(__FILE__) . "/layouts/header.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/header.php"?>
     <div class="content">
       <div class="container">
         <h2 class="title">
@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody>
-            <? foreach ($films as $film):?>
+            <?php foreach ($films as $film):?>
             <tr>
               <td>
                 <a href="<?="/film/$film->id"?>">
@@ -27,20 +27,20 @@
               <td><?=$film->year?></td>
               <td><?=$film->format?></td>
               <td>
-                <?foreach($film->actors as $actor):?>
+                <?php foreach($film->actors as $actor):?>
                   <?=$actor->name?>
                   <?=$actor->surname?>
                   <br>
-                <?endforeach;?>
+                <?php endforeach;?>
               </td>
               <td>
                 <a href="<?="/film/$film->id"?>"><i class="fas fa-bars"></i></a>
               </td>
             </tr>
-            <? endforeach;?>
+          <?php endforeach;?>
           </tbody>
         </table>
       </div>
     </div>
 
-  <? include_once dirname(__FILE__) . "/layouts/footer.php"?>
+  <?php include_once dirname(__FILE__) . "/layouts/footer.php"?>

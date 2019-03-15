@@ -42,31 +42,31 @@
 	  </div>
 	</nav>
 	<div class="alerts">
-  		<?if (\App\Components\Session::isset('error')): ?>
-			<?foreach (\App\Components\Session::get('error') as $error):?>
-				<? foreach ($error as $e):?>
+  		<?php if (\App\Components\Session::isset('error')): ?>
+			<?php foreach (\App\Components\Session::get('error') as $error):?>
+				<?php foreach ($error as $e):?>
 					<div class="alert alert-danger alert-dismissible fade show" role="alert">
 					  <?=$e?>
 					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					    <span aria-hidden="true">&times;</span>
 					  </button>
 					</div>
-				<?endforeach?>
-			<?endforeach;?>
-  		<? endif;?>
+				<?php endforeach?>
+			<?php endforeach;?>
+    <?php endif;?>
 
-  		<?if (\App\Components\Session::isset('success')): ?>
-			<?foreach (\App\Components\Session::get('success') as $error):?>
-				<? foreach ($error as $e):?>
+  		<?php if (\App\Components\Session::isset('success')): ?>
+			<?php foreach (\App\Components\Session::get('success') as $error):?>
+				<?php foreach ($error as $e):?>
 					<div class="alert alert-success alert-dismissible fade show" role="alert">
 					  <?=$e?>
 					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					    <span aria-hidden="true">&times;</span>
 					  </button>
 					</div>
-				<?endforeach?>
-			<?endforeach;?>
-  		<? endif;?>
+				<?php endforeach?>
+			<?php endforeach;?>
+    <?php endif;?>
   	</div>
   	</div>
   </div>
